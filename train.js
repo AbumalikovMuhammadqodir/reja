@@ -78,44 +78,41 @@
 // }
 // run();
 
-
-
 // colbek functionlar
 console.log("Jack Ma maslahatlari");
 const List = [
-"yahshi talaba boling" // 20 Yoshgach
-"To'g'ri boshliq tanlang va koproq hato qiling" //30dan 40 yoshgacha
-"O'zingizga ishlshni boshlang" //30dan 40yoshgacha
-"Siz kuchli bo'lgan narsalarni qiling" // 40dan 50 yoshgach
-"Yoshlarga invistitsiya kiriting" // 50dan 60yoshgacha
-"Endi dam oling , foydasi yo'q" //60yoshdan kegin
-
+  "yahshi talaba boling", // 20 Yoshgach
+  "To'g'ri boshliq tanlang va koproq hato qiling", //30dan 40 yoshgacha
+  "O'zingizga ishlshni boshlang", //30dan 40yoshgacha
+  "Siz kuchli bo'lgan narsalarni qiling", // 40dan 50 yoshgach
+  "Yoshlarga invistitsiya kiriting", // 50dan 60yoshgacha
+  "Endi dam oling , foydasi yo'q", //60yoshdan kegin
 ];
 
 function maslahatBering(a, callback) {
-    if(typeof a !== 'number') callback("insert a number", null);
-    else if (a <= 20) callback(null, List[0]);
-    else if (a > 20 && a <= 30) callback(null, list[1]);
-    else if (a > 30 && a <= 40) callback(null, list[2]);
-    else if (a > 40 && a <= 50) callback(null, list[3]);
-    else if (a > 50 && a <= 60) callback(null, list[4]);
-    else {
-    setInterval(function() {
-        callback(null, list[5])
-    },5000);
-    }
+  if (typeof a !== "number") callback("insert a number", null);
+  else if (a <= 20) callback(null, List[0]);
+  else if (a > 20 && a <= 30) callback(null, list[1]);
+  else if (a > 30 && a <= 40) callback(null, list[2]);
+  else if (a > 40 && a <= 50) callback(null, list[3]);
+  else if (a > 50 && a <= 60) callback(null, list[4]);
+  else {
+    setInterval(function () {
+      callback(null, list[5]);
+    }, 5000);
+  }
 }
 
 console.log("passed here 0");
 maslahatBering(65, (err, date) => {
-    if (err) console.log("ERROR:", err);
-else {
+  if (err) console.log("ERROR:", err);
+  else {
     console.log("javob:", data);
-}
+  }
 });
 console.log("passed here 1");
 
 maslahatBering(55, (err, data) => {
-if( err) console.log('ERROR:', err);
-console.log("javob:", data);
+  if (err) console.log("ERROR:", err);
+  console.log("javob:", data);
 });
