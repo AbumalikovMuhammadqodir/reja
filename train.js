@@ -117,18 +117,18 @@
 //   console.log("javob:", data);
 // });
 
-//Task A
-function sozlar(e, soz) {
-  const result = [];
-  soz.split("").map((harf) => {
-    if (harf === e) {
-      return result.push(harf);
-    }
-  });
-  return result.length;
-}
+// //Task A
+// function sozlar(e, soz) {
+//   const result = [];
+//   soz.split("").map((harf) => {
+//     if (harf === e) {
+//       return result.push(harf);
+//     }
+//   });
+//   return result.length;
+// }
 
-console.log(sozlar("e", "ele"));
+// console.log(sozlar("e", "ele"));
 
 //Task B
 function countDigits(a) {
