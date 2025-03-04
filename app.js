@@ -2,7 +2,10 @@ console.log("Web servarni boshlash");
 const express = require("express");
 const app = express();
 const fs = require("fs");
+
+//Mongo db chaqiish
 const db = require("./server").db();
+const mongodb = require("mongodb");
 
 // let user;
 // fs.readFile("database/user.json", "utf8", (err, data) => {
@@ -33,6 +36,18 @@ app.post("/create-item", (req, res) => {
   db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {});
   console.log(data.ops);
   res.json(data.ops[0]);
+});
+
+app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  // console.log(id);
+  // res.end("done");
+  db.collection("plans").deleteOne(
+    { _id: new mongodb.ObjectId(id) },
+    function (err, data) {
+      res.json({ state: "success" });
+    }
+  );
 });
 
 // app.get("/gift", function (req, res) {
