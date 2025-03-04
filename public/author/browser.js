@@ -26,9 +26,9 @@ let createField = document.getElementById("create-field");
 
 document.getElementById("create-form").addEventListener("submit", function (e) {
   e.preventDefault();
-
+  console.log("reja", createField.value);
   axios
-    .post("/create-item", { reja: new_reja.value })
+    .post("/create-item", { reja: createField.value })
     .then((response) => {
       document.getElementById("item-list");
       this.insertAdjacentHTML("beforeend".itemTemplate(data));
