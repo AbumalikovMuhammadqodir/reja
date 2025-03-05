@@ -30,12 +30,23 @@ app.set("view engine", "ejs");
 
 // 4 Routing code
 
-app.post("/create-item", (req, res) => {
-  console.log("user entered /create-item");
+app.post("/create-item", function (req, res) {
+  console.log("User entered /create-item");
+
   const new_reja = req.body.reja;
-  db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {});
-  console.log(data.ops);
-  res.json(data.ops[0]);
+  if (!new_reja) {
+    return res.status(400).json({ error: "Reja kiritilishi shart!" });
+  }
+
+  db.collection("plans").insertOne({ reja: new_reja }, function (err, data) {
+    if (err) {
+      console.error("Xatolik yuz berdi:", err);
+      return res.status(500).json({ error: "Ichki server xatosi" });
+    }
+
+    console.log(data);
+    res.json({ _id: data.insertedId, reja: new_reja });
+  });
 });
 
 app.post("/delete-item", (req, res) => {

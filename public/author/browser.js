@@ -2,19 +2,20 @@ console.log("FrontEnd JS ishga tushdi");
 
 function itemTemplate(item) {
   return `<li
-            class="list-group-item list-group-info d-flex ligin-items center justify-content-between"
+            class="list-group-item list-group-info d-flex align-items-center justify-content-between"
           >
             <span class="item-text">${item.reja}</span>
             <div>
               <button
-                data-id="${item_id}"
+                data-id="${item._id}"
                 class="edit-me btn btn-secondary btn-sm mr-1"
               >
                 Ozgartirish
               </button>
               <button
-                data-id="${item_id}"
-                class="delete-me btn btm-danger btn-sm"
+                data-id="${item._id}"
+                class="delete-me btn btn-danger btn-sm"
+                style="background-color: red; color: white"
               >
                 Ochirish
               </button>
@@ -26,17 +27,22 @@ let createField = document.getElementById("create-field");
 
 document.getElementById("create-form").addEventListener("submit", function (e) {
   e.preventDefault();
-  console.log("reja", createField.value);
+  console.log("reja:", createField.value);
+
   axios
     .post("/create-item", { reja: createField.value })
     .then((response) => {
-      document.getElementById("item-list");
-      this.insertAdjacentHTML("beforeend".itemTemplate(data));
+      console.log("response", response.data);
+      document
+        .getElementById("item-list")
+        .insertAdjacentHTML("beforeend", itemTemplate(response.data));
+
       createField.value = "";
       createField.focus();
     })
-    .catch((err) => {});
-  console.log("Iltumos qaytadan harakat qiling");
+    .catch((err) => {
+      console.log("Iltimos, qaytadan harakat qiling");
+    });
 });
 
 document.addEventListener("click", function (e) {
@@ -61,6 +67,6 @@ document.addEventListener("click", function (e) {
 
   //edit oper
   if (e.target.classList.contains("edit-me")) {
-    alert("siz edit tugmasini bostingiz");
+    let userInput = prompt("O'zgartirish kiriting");
   }
 });
