@@ -51,8 +51,7 @@ app.post("/create-item", function (req, res) {
 
 app.post("/delete-item", (req, res) => {
   const id = req.body.id;
-  // console.log(id);
-  // res.end("done");
+
   db.collection("plans").deleteOne(
     { _id: new mongodb.ObjectId(id) },
     function (err, data) {
@@ -61,9 +60,31 @@ app.post("/delete-item", (req, res) => {
   );
 });
 
-// app.get("/gift", function (req, res) {
-//   res.end("<h1>Siz sovg'alar bo'limidasiz</h1>");
-// });
+app.post("/edit-item", (req, res) => {
+  const data = req.body;
+  console.log(data);
+  db.collection("plans").findOneAndUpdate(
+    { _id: new mongodb.ObjectId(data.id) },
+    { $set: { reja: data.new_input } },
+    function (err, data) {
+      res.json({ state: "success" });
+    }
+  );
+});
+
+app.post("/delete-all", (req, res) => {
+  console.log("nimadur", req.body.delete_all);
+  if (req.body.delete_all) {
+    console.log("nimadur", req.body.delete_all);
+    db.collection("plans").deleteMany({}, function (err, result) {
+      if (err) {
+        return res.json({ state: "Hatolik bo'ldi" });
+      }
+
+      res.json({ state: "hamma rejalar ochirildi" });
+    });
+  }
+});
 
 app.get("/", function (req, res) {
   console.log("user entered /");

@@ -7,6 +7,8 @@
 // "Yoshlarga invistitsiya kiriting" // 50dan 60yoshgacha
 // "Endi dam oling , foydasi yo'q" //60yoshdan kegin
 
+const { Route } = require("express");
+
 // ];
 
 //
@@ -244,6 +246,18 @@ class dokon {
 
 // // Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
 // // MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+
+function checkContent(a, b) {
+  const bir = a.split("").sort().join("");
+  const ikki = b.split("").sort().join("");
+  if (bir === ikki) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(checkContent("mitgroup", "gmtiprou"));
 
 function checkContent(a, b) {
   const bir = a.split("").sort().join("");
