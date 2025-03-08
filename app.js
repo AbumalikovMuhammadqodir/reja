@@ -32,21 +32,18 @@ app.set("view engine", "ejs");
 
 app.post("/create-item", function (req, res) {
   console.log("User entered /create-item");
-
-  const new_reja = req.body.reja;
-  if (!new_reja) {
-    return res.status(400).json({ error: "Reja kiritilishi shart!" });
-  }
+  const new_reja = req.body.reja; // 5 step  req.body ichida frontentdan kelgan malumotni new_reja vrablega tenglayapmiz
 
   db.collection("plans").insertOne({ reja: new_reja }, function (err, data) {
+    // 6 step data bazadagi "plans degan collectionga infert on  metodi orqali malimotni qo'shyapmiz
     if (err) {
-      console.error("Xatolik yuz berdi:", err);
+      console.error("Xatolik yuz berdi:", err); // data bazaga qo'shishda hatolik kelib chiqsa (Ichki server xatosi) yozuvini yuboradi
       return res.status(500).json({ error: "Ichki server xatosi" });
     }
 
     console.log(data);
     res.json({ _id: data.insertedId, reja: new_reja });
-  });
+  }); // 7 step malumot data bazaga qo'shilsa q'shilgan malumotni fornt an ga yuboryapti
 });
 
 app.post("/delete-item", (req, res) => {

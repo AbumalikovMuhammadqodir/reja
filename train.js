@@ -247,26 +247,37 @@ class dokon {
 // // Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
 // // MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
 
-function checkContent(a, b) {
-  const bir = a.split("").sort().join("");
-  const ikki = b.split("").sort().join("");
-  if (bir === ikki) {
-    return true;
-  } else {
-    return false;
-  }
+// function checkContent(a, b) {
+//   const bir = a.split("").sort().join("");
+//   const ikki = b.split("").sort().join("");
+//   if (bir === ikki) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(checkContent("mitgroup", "gmtiprou"));
+
+// function checkContent(a, b) {
+//   const bir = a.split("").sort().join("");
+//   const ikki = b.split("").sort().join("");
+//   if (bir === ikki) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(checkContent("mitgroup", "gmtiprou"));
+
+// E-TASK:
+
+// Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
+// MASALAN: getReverse("hello") return qilsin "olleh"
+
+function getReverse(a) {
+  return a.split("").reverse().join("");
 }
 
-console.log(checkContent("mitgroup", "gmtiprou"));
-
-function checkContent(a, b) {
-  const bir = a.split("").sort().join("");
-  const ikki = b.split("").sort().join("");
-  if (bir === ikki) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-console.log(checkContent("mitgroup", "gmtiprou"));
+console.log(getReverse("hello"));

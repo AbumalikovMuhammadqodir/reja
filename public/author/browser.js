@@ -24,17 +24,18 @@ function itemTemplate(item) {
 }
 
 let createField = document.getElementById("create-field");
-
+// 1 step reja input selekt(tanlab olyapmiz) qilyapmiz
 document.getElementById("create-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+  //2 step formni tanlab ichida sammit hodisa ro'y bersa function ishlaydi
+  e.preventDefault(); // 3 step tradetion API ni to'xtatyapmiz
   console.log("reja:", createField.value);
 
   axios
-    .post("/create-item", { reja: createField.value })
+    .post("/create-item", { reja: createField.value }) // 4 step axios yordamida backentdagi /create-itemga manzilga recuves (malumot)yuboryapmiz
     .then((response) => {
-      console.log("response", response.data);
+      console.log("response", response.data); // 8 step beck and dan javob keldi
       document
-        .getElementById("item-list")
+        .getElementById("item-list") // 9step malumotni front and ga rendor(chiqaryapmiz) qilyapmiz
         .insertAdjacentHTML("beforeend", itemTemplate(response.data));
 
       createField.value = "";
