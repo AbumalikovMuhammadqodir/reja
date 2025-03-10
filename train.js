@@ -276,8 +276,30 @@ class dokon {
 // Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
 // MASALAN: getReverse("hello") return qilsin "olleh"
 
-function getReverse(a) {
-  return a.split("").reverse().join("");
+// function getReverse(a) {
+//   return a.split("").reverse().join("");
+// }
+
+// console.log(getReverse("hello"));
+
+// TASK F
+
+// Yagona string argumentga ega findDoublers nomli function tuzing
+// Agar stringda bittadan ortiq bir xil harflar ishtirok etgan bo'lsa
+// true yokida false natija qaytarsin.
+
+// MASALAN: findDoublers("hello"); natija true qaytadi. Sababi ikki marotaba takrorlangan 'll' harfi mavjud!
+
+function findDoublers(input) {
+  const soz = input.split("");
+  const result = soz.filter((harf, index) => {
+    return soz.indexOf(harf) !== index;
+  });
+  if (result.length) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-console.log(getReverse("hello"));
+console.log(findDoublers("hello"));
